@@ -1,0 +1,408 @@
+{
+  "name": "Full AI Pipeline (Summary, Skills, Save, Match, Score, Store In Spring)",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {
+          "responseCode": 200,
+          "responseHeaders": {
+            "entries": [
+              {
+                "name": "Content-Type",
+                "value": "application/json"
+              }
+            ]
+          }
+        }
+      },
+      "id": "d6c5b498-01d3-4919-abdf-ef1982cfa872",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        32
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://host.docker.internal:8080/api/personal-data/result",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "65d2c8d8-b052-4293-a22b-d2ce00e5f42c",
+      "name": "Save To Spring Boot",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -416,
+        32
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// 모든 입력 데이터 가져오기 (4개: Summary, Skills, Match, Score)\nconst allInputs = $input.all();\n\n// Webhook 원본 데이터\nconst webhookData = $('Webhook Trigger').first().json.body;\n\n// ---- 결과 기본 구조 ----\nconst result = {\n  resumeId: webhookData.resumeId || webhookData.candidate_id || null,\n  summary: null,\n  skills: [],\n  recommand: [],\n  scoreResult: {},\n  processedAt: new Date().toISOString()\n};\n\n// ---- 입력 4개에서 필요한 데이터 추출 ----\nallInputs.forEach((item, index) => {\n  const json = item.json;\n\n  // Summary\n  if (json.summary !== undefined) {\n    result.summary = json.summary;\n  }\n\n  // Skills\n  if (json.skills !== undefined) {\n    result.skills = Array.isArray(json.skills) ? json.skills : [];\n  }\n\n  // Match 결과\n  if (json.matches !== undefined) {\n    result.recommand = json.matches;\n  }\n\n  // --- Score 결과 ---\n  if (\n    json.candidate_id !== undefined &&\n    json.score_detail !== undefined\n  ) {\n    result.scoreResult = {\n      cosine_similarity: $('Score Candidate').first().json.cosine_similarity,\n      skill_ratio: $('Score Candidate').first().json.score_detail.skill_ratio,\n      skill_score: $('Score Candidate').first().json.score_detail.skill_score,\n      sim_score: $('Score Candidate').first().json.score_detail.sim_score,\n      bonus: $('Score Candidate').first().json.score_detail.bonus,\n      total: $('Score Candidate').first().json.score_detail.total\n    };\n  }\n});\n\n// ---- 최종 출력 ----\nreturn {\n  json: result\n};\n"
+      },
+      "id": "0df68a1a-6b08-4447-b46e-eb9376a62398",
+      "name": "Build Final Result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -640,
+        32
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "fb9246ba-a32a-44c1-80f3-132cb2324b2c",
+      "name": "Wait for All",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -1088,
+        -160
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://175.197.41.64:33398/score",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"jd_text\": \"저는 문제를 구조적으로 분석하고, 안정적인 서비스를 설계하는 백엔드 개발자입니다. 대학에서 IoT AI 융합공학을 전공하며 데이터 흐름과 시스템 구조에 대한 이해를 쌓았고, 이후 Java와 Spring Boot 기반의 프로젝트를 통해 실무형 개발 역량을 키웠습니다.대표적으로 실시간 채용 관리 시스템 CoreBridge를 설계하며 Spring Boot + JPA + MariaDB 로 주요 API를 구현하고, Redis SSE를 이용해 실시간 알림 기능을 개발했습니다. 또한 Docker, Kubernetes, Jenkins를 활용해 CI/CD 환경을 구축하고, Blue/Green 및 Canary 배포를 적용하여 무중단 배포를 실현했습니다. 이러한 과정에서 서비스의 확장성과 안정성을 고려한 인프라 설계의 중요성을 깊이 이해했습니다.저는 새로운 기술을 학습하는 것을 즐기며, Kafka, AWS, Vue.js, FastAPI 등 다양한 기술 스택을 프로젝트에 실험적으로 적용해보았습니다. 협업에서는 GitHub 기반 브랜치 전략과 코드 리뷰를 적극 도입해 팀 생산성을 높였습니다.앞으로는 대규모 서비스 환경에서 클라우드 기반 백엔드 아키텍처를 고도화하며, 효율적이고 안정적인 서비스를 제공하는 엔지니어로 성장하고 싶습니다. 문제 해결을 즐기고, 끊임없이 개선하는 개발자로서 조직의 기술적 성장을 이끌겠습니다\",\n  \"candidate_id\": \"65\",\n  \"required_skills\": [\"Java\", \"Spring Boot\", \"Redis\", \"AWS\"]\n}",
+        "options": {}
+      },
+      "id": "a8ddf357-3f22-4f27-b683-baf0571f6d6c",
+      "name": "Score Candidate",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1312,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://175.197.41.64:33398/match_jd",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"jd_text\": \"={{ $node['Webhook Trigger'].json.body.description }}\",\n  \"required_skills\": [\"Java\", \"Spring Boot\", \"Redis\", \"AWS\"],\n  \"top_k\": 5\n}",
+        "options": {}
+      },
+      "id": "db983f60-5b0e-4305-9d38-70ccf32cc249",
+      "name": "Match JD",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1312,
+        128
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://175.197.41.64:33398/skills",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"{{ $('Webhook Trigger').item.json.body.description }}\"\n}",
+        "options": {}
+      },
+      "id": "ddd97047-c4c8-41c7-acea-f36e533e37c2",
+      "name": "Extract Skills",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1312,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://175.197.41.64:33398/summary",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"{{ $('Webhook Trigger').item.json.body.description }}\"\n}",
+        "options": {}
+      },
+      "id": "ed84a313-8918-4c5b-8650-d5d612ac4ad4",
+      "name": "Get Summary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1312,
+        -256
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://175.197.41.64:33398/save_resume",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"candidate_id\": \"{{ $json.body.candidate_id }}\",\n  \"resume_text\": \"{{ $json.body.description }}\"\n}",
+        "options": {}
+      },
+      "id": "423a515e-d3a7-4810-a676-5fa40a32f9de",
+      "name": "Save Resume Vector",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1536,
+        32
+      ]
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "ai-analysis/process",
+        "options": {}
+      },
+      "id": "eabcf8e8-8c5c-4f94-bbf5-673db2d205ad",
+      "name": "Webhook Trigger",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [
+        -1760,
+        32
+      ],
+      "webhookId": "ai-analysis-webhook"
+    },
+    {
+      "parameters": {},
+      "id": "8c2397d5-c0ad-4614-a10e-e8109856db2a",
+      "name": "Wait for All1",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -1088,
+        224
+      ],
+      "executeOnce": false
+    },
+    {
+      "parameters": {},
+      "id": "4bd15ed4-61c5-425b-bcbe-d5586d245322",
+      "name": "Wait for All2",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2.1,
+      "position": [
+        -864,
+        32
+      ],
+      "executeOnce": false
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook Trigger": {
+      "main": [
+        [
+          {
+            "node": "Save Resume Vector",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Resume Vector": {
+      "main": [
+        [
+          {
+            "node": "Get Summary",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Extract Skills",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Match JD",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Score Candidate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Summary": {
+      "main": [
+        [
+          {
+            "node": "Wait for All",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract Skills": {
+      "main": [
+        [
+          {
+            "node": "Wait for All",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Match JD": {
+      "main": [
+        [
+          {
+            "node": "Wait for All1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Score Candidate": {
+      "main": [
+        [
+          {
+            "node": "Wait for All1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Wait for All": {
+      "main": [
+        [
+          {
+            "node": "Wait for All2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Final Result": {
+      "main": [
+        [
+          {
+            "node": "Save To Spring Boot",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save To Spring Boot": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for All1": {
+      "main": [
+        [
+          {
+            "node": "Wait for All2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Wait for All2": {
+      "main": [
+        [
+          {
+            "node": "Build Final Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "09a7f8de-d627-4e2b-9f09-660954f267ff",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "558d88703fb65b2d0e44613bc35916258b0f0bf983c5d4730c00c424b77ca36a"
+  },
+  "id": "S1uo08VRXnXawvVA",
+  "tags": []
+}
