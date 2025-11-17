@@ -10,6 +10,7 @@
 
 AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직접 설계·구현·자동화·모니터링**한 프로젝트입니다. 이력서 텍스트를 입력받아 요약 → 스킬 추출 → 임베딩 → 벡터 검색 → 매칭 → LLM 스코어링 → DB 저장까지 **총 8단계의 End-To-End AI Workflow**를 n8n을 이용해 구축했습니다.
 
+<br /><br />
 
 ## 🎯 프로젝트 목표
 
@@ -18,11 +19,11 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 - n8n을 이용해 파이프라인 자동화 및 오류 없는 흐름 구성
 - Prometheus + Grafana 기반 실시간 성능 분석 및 병목 파악
 
+<br /><br />
+
 ## 🧠 전체 아키텍처 개요
 
 <img width="1417" height="328" alt="image" src="https://github.com/user-attachments/assets/e0fcd78c-a3e3-4bbf-b7eb-c6e56a04a4bc" />
-
-<br /><br />
 
 ```
 1단계: 웹훅 수신 재개(n8n) → 텍스트 추출 Resume Input (Webhook)
@@ -35,6 +36,8 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 8단계: Spring boot를 통해 Mariadb에 저장(Spring Boot Backend & Mariadb)
 ```
 
+<br /><br />
+
 ## Swagger
 
 - http://175.197.41.64:33398/docs
@@ -42,6 +45,8 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 <img width="1447" height="838" alt="image" src="https://github.com/user-attachments/assets/a248608a-8511-47d4-92b7-ff649266dc88" />
 
 <br /><br />
+
+- Scoring 예시
 
 <img width="1420" height="854" alt="image" src="https://github.com/user-attachments/assets/c3f46466-c7d7-46f3-b344-a91795972e58" />
 
@@ -97,19 +102,19 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 
 <img width="1580" height="681" alt="image" src="https://github.com/user-attachments/assets/6c2af872-8ab9-4cf7-8627-b2dacd909b15" />
 
-<br /><br />
-
 - `ai_workflow_total_processing_ms`  
 - `ai_service_summary_latency_ms`  
 - `ai_service_skills_latency_ms`  
 - `ai_service_embedding_latency_ms`  
 - `ai_service_redis_latency_ms`  
 - `ai_service_match_latency_ms`  
-- `ai_service_score_latency_ms`  
+- `ai_service_score_latency_ms`
 
 ### Grafana 대시보드 주요 기능
 - 전체 파이프라인 처리시간 실시간 확인  
-- 단계별 병목 지점 한눈에 확인  
+- 단계별 병목 지점 한눈에 확인
+
+<br /><br />
 
 ## 🧱 기술 스택
 
@@ -141,5 +146,6 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 - JD 매칭 속도 50~300ms로 단축  
 - LLM 병목 파악 후 개선 방향성 명확화  
 - 서비스 장애 관찰성 확보  
+
 
 
