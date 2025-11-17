@@ -6,6 +6,7 @@
 
 <img width="1542" height="665" alt="image" src="https://github.com/user-attachments/assets/ec6469a2-07e6-4eac-b1b9-9ccd5890b6c8" />
 
+<br />
 
 AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직접 설계·구현·자동화·모니터링**한 프로젝트입니다. 이력서 텍스트를 입력받아 요약 → 스킬 추출 → 임베딩 → 벡터 검색 → 매칭 → LLM 스코어링 → DB 저장까지 **총 8단계의 End-To-End AI Workflow**를 n8n을 이용해 구축했습니다.
 
@@ -21,6 +22,7 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 
 <img width="1417" height="328" alt="image" src="https://github.com/user-attachments/assets/e0fcd78c-a3e3-4bbf-b7eb-c6e56a04a4bc" />
 
+<br />
 
 ```
 1단계: 웹훅 수신 재개(n8n) → 텍스트 추출 Resume Input (Webhook)
@@ -33,6 +35,17 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 8단계: Spring boot를 통해 Mariadb에 저장(Spring Boot Backend & Mariadb)
 ```
 
+## Swagger
+
+- http://175.197.41.64:33398/docs
+
+<img width="1447" height="838" alt="image" src="https://github.com/user-attachments/assets/a248608a-8511-47d4-92b7-ff649266dc88" />
+
+<br />
+
+<img width="1420" height="854" alt="image" src="https://github.com/user-attachments/assets/c3f46466-c7d7-46f3-b344-a91795972e58" />
+
+<br />
 
 ## 🔄 파이프라인 단계별 설명
 
@@ -74,7 +87,7 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 ## 📊 모니터링 & 관찰성 (Observability)
 Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시각화했습니다.
 
-[http://175.197.41.64:33377/d/corebridge-n8n-pipeline-v1/-corebridge-n8n-ai-pipeline-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&refresh=5s&viewPanel=panel-2](http://175.197.41.64:33377/d/corebridge-n8n-pipeline-v1/-corebridge-n8n-ai-pipeline-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&refresh=5s)
+[http://175.197.41.64:33377](http://175.197.41.64:33377/d/corebridge-n8n-pipeline-v1/-corebridge-n8n-ai-pipeline-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&refresh=5s)
 
 ### 주요 지표
 - `ai_workflow_total_processing_ms`  
@@ -120,3 +133,4 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 - LLM 병목 파악 후 개선 방향성 명확화  
 - 서비스 장애 관찰성 확보  
 - k8s 기반 확장성 있는 AI 서비스 운영 가능
+
