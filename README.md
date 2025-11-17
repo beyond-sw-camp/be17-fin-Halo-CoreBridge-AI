@@ -6,7 +6,7 @@
 
 <img width="1542" height="665" alt="image" src="https://github.com/user-attachments/assets/ec6469a2-07e6-4eac-b1b9-9ccd5890b6c8" />
 
-<br />
+<br /><br />
 
 AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직접 설계·구현·자동화·모니터링**한 프로젝트입니다. 이력서 텍스트를 입력받아 요약 → 스킬 추출 → 임베딩 → 벡터 검색 → 매칭 → LLM 스코어링 → DB 저장까지 **총 8단계의 End-To-End AI Workflow**를 n8n을 이용해 구축했습니다.
 
@@ -22,7 +22,7 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 
 <img width="1417" height="328" alt="image" src="https://github.com/user-attachments/assets/e0fcd78c-a3e3-4bbf-b7eb-c6e56a04a4bc" />
 
-<br />
+<br /><br />
 
 ```
 1단계: 웹훅 수신 재개(n8n) → 텍스트 추출 Resume Input (Webhook)
@@ -41,11 +41,11 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 
 <img width="1447" height="838" alt="image" src="https://github.com/user-attachments/assets/a248608a-8511-47d4-92b7-ff649266dc88" />
 
-<br />
+<br /><br />
 
 <img width="1420" height="854" alt="image" src="https://github.com/user-attachments/assets/c3f46466-c7d7-46f3-b344-a91795972e58" />
 
-<br />
+<br /><br />
 
 ## 🔄 파이프라인 단계별 설명
 
@@ -84,12 +84,21 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 - 이후 관리자 대시보드에서 활용
 
 
+<img width="1807" height="748" alt="image" src="https://github.com/user-attachments/assets/943d02e1-1d31-43a9-8730-1fcb3c51a353" />
+
+<br /><br />
+
 ## 📊 모니터링 & 관찰성 (Observability)
 Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시각화했습니다.
 
 [http://175.197.41.64:33377](http://175.197.41.64:33377/d/corebridge-n8n-pipeline-v1/-corebridge-n8n-ai-pipeline-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&refresh=5s)
 
 ### 주요 지표
+
+<img width="1580" height="681" alt="image" src="https://github.com/user-attachments/assets/6c2af872-8ab9-4cf7-8627-b2dacd909b15" />
+
+<br /><br />
+
 - `ai_workflow_total_processing_ms`  
 - `ai_service_summary_latency_ms`  
 - `ai_service_skills_latency_ms`  
@@ -132,5 +141,5 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 - JD 매칭 속도 50~300ms로 단축  
 - LLM 병목 파악 후 개선 방향성 명확화  
 - 서비스 장애 관찰성 확보  
-- k8s 기반 확장성 있는 AI 서비스 운영 가능
+
 
