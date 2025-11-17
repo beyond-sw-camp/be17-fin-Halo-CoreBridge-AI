@@ -1,0 +1,38 @@
+1. kubectl create namespace monitor
+
+2. helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo update
+
+3. helm install prom prometheus-community/kube-prometheus-stack -n monitor
+
+4. kubectl get pods -n monitor
+
+5. kubectl patch svc prom-grafana -n monitor -p '{"spec": {"type": "LoadBalancer"}}'
+   kubectl patch svc prom-kube-prometheus-stack-prometheus -n monitor -p '{"spec": {"type": "LoadBalancer"}}'
+
+6. ScrapeConfig CRD 적용
+
+Prometheus Operator 최신 버전에서는 ScrapeConfig를 따로 정의해야 하고,
+Prometheus는 label selector로 ScrapeConfig를 자동으로 다 읽어간다.
+
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: external-ai-server
+  namespace: monitor
+  labels:
+    release: prom
+spec:
+  staticConfigs:
+    - targets:
+      - '175.197.41.64:33398'
+  metricsPath: /metrics
+  scheme: HTTP
+
+
+7. push gateway 설치
+
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+
+helm install pushgateway prometheus-community/prometheus-pushgateway -n monitor

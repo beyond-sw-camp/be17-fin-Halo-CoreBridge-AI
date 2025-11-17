@@ -85,9 +85,10 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 - 인과 기반 평가(why matched?)
 
 ### 8️⃣ Result Persistence (Spring Boot)
-- 정제된 결과를 Spring Backend에 저장  
+- 정제된 결과를 Spring Backend를 통해 MariaDB에 저장  
 - 이후 관리자 대시보드에서 활용
 
+- MariaDB에 저장
 
 <img width="1807" height="748" alt="image" src="https://github.com/user-attachments/assets/943d02e1-1d31-43a9-8730-1fcb3c51a353" />
 

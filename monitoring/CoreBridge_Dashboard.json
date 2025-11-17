@@ -1,0 +1,1181 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": false,
+        "iconColor": "rgba(255, 96, 96, 0.9)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": 51,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "panels": [],
+      "title": "🎯 n8n Workflow Overview",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='font-family:Arial, sans-serif; padding:20px;'><div style='text-align:center; margin-bottom:30px;'><h2 style='color:#4db8ff; margin-bottom:10px;'>🚀 CoreBridge n8n AI Pipeline Flow</h2><p style='color:#999; font-size:14px;'>Real-time Resume Processing & Matching System</p></div><div style='display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:10px; font-size:15px;'><div style='background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:white; padding:12px 20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); min-width:120px; text-align:center;'><b>📥 Webhook</b><br/><span style='font-size:11px; opacity:0.9;'>n8n Trigger</span></div><div style='font-size:24px; color:#667eea;'>→</div><div style='background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color:white; padding:12px 20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); min-width:120px; text-align:center;'><b>🔍 FastAPI</b><br/><span style='font-size:11px; opacity:0.9;'>AI Processing</span></div><div style='font-size:24px; color:#f5576c;'>→</div><div style='background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color:white; padding:12px 20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); min-width:120px; text-align:center;'><b>🤖 Ollama</b><br/><span style='font-size:11px; opacity:0.9;'>LLM Engine</span></div><div style='font-size:24px; color:#00f2fe;'>→</div><div style='background:linear-gradient(135deg, #fa709a 0%, #fee140 100%); color:white; padding:12px 20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); min-width:120px; text-align:center;'><b>🗄️ Redis</b><br/><span style='font-size:11px; opacity:0.9;'>Vector DB</span></div><div style='font-size:24px; color:#fee140;'>→</div><div style='background:linear-gradient(135deg, #30cfd0 0%, #330867 100%); color:white; padding:12px 20px; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); min-width:120px; text-align:center;'><b>💾 Spring & MariaDB</b><br/><span style='font-size:11px; opacity:0.9;'>Data Storage</span></div></div><div style='margin-top:30px; padding:20px; background:rgba(102, 126, 234, 0.1); border-left:4px solid #667eea; border-radius:4px;'><h3 style='color:#667eea; margin-top:0;'>🔄 Pipeline Stages</h3><ul style='color:#ddd; line-height:1.8; margin:10px 0;'><li><b>Stage 1:</b> Resume Webhook Reception (n8n) → Text Extraction</li><li><b>Stage 2:</b> AI Summary Generation (Ollama LLM via FastAPI)</li><li><b>Stage 3:</b> Skills Extraction (Ollama LLM via FastAPI)</li><li><b>Stage 4:</b> Sentence Embedding (FastAPI + nomic-embed-text)</li><li><b>Stage 5:</b> Vector Storage (Redis with RediSearch)</li><li><b>Stage 6:</b> JD Matching (Cosine Similarity Search)</li><li><b>Stage 7:</b> Candidate Scoring (LLM-based Analysis)</li><li><b>Stage 8:</b> Result Persistence (Spring Boot Backend)</li></ul></div></div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.1",
+      "title": "CoreBridge AI Pipeline Architecture",
+      "type": "text"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 100000
+              },
+              {
+                "color": "orange",
+                "value": 150000
+              },
+              {
+                "color": "red",
+                "value": 200000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "titleSize": 14,
+          "valueSize": 28
+        },
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_workflow_total_processing_ms{job='pushgateway-prometheus-pushgateway'}",
+          "refId": "A"
+        }
+      ],
+      "title": "전체 파이프라인 처리 시간",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 11
+      },
+      "id": 4,
+      "panels": [],
+      "title": "⚡ n8n → FastAPI Integration Performance",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byRegexp",
+              "options": ".*LLM.*"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "left"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "LLM Operations (ms)"
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 0
+              },
+              {
+                "id": "custom.axisSoftMax",
+                "value": 80000
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 3
+              },
+              {
+                "id": "custom.fillOpacity",
+                "value": 15
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "📊 Embedding"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Embedding (ms)"
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 0
+              },
+              {
+                "id": "custom.axisSoftMax",
+                "value": 2000
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "⚡ Redis Vector Search"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Redis (ms)"
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 0
+              },
+              {
+                "id": "custom.axisSoftMax",
+                "value": 30
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "green",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "🎯 JD Matching"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              },
+              {
+                "id": "custom.axisLabel",
+                "value": "Matching (ms)"
+              },
+              {
+                "id": "custom.axisSoftMin",
+                "value": 0
+              },
+              {
+                "id": "custom.axisSoftMax",
+                "value": 5000
+              },
+              {
+                "id": "custom.lineWidth",
+                "value": 2
+              },
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "orange",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Last *",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_summary_latency_ms",
+          "legendFormat": "📝 Summary (LLM)",
+          "refId": "A"
+        },
+        {
+          "expr": "ai_service_skills_latency_ms",
+          "legendFormat": "🔧 Skills Extraction (LLM)",
+          "refId": "B"
+        },
+        {
+          "expr": "ai_service_embedding_latency_ms",
+          "legendFormat": "📊 Embedding",
+          "refId": "C"
+        },
+        {
+          "expr": "ai_service_redis_latency_ms",
+          "legendFormat": "⚡ Redis Vector Search",
+          "refId": "D"
+        },
+        {
+          "expr": "ai_service_match_latency_ms",
+          "legendFormat": "🎯 JD Matching",
+          "refId": "E"
+        },
+        {
+          "expr": "ai_service_score_latency_ms",
+          "legendFormat": "📊 Scoring (LLM)",
+          "refId": "F"
+        }
+      ],
+      "title": "n8n Workflow Stage Latencies (Multi-Axis View)",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 6,
+      "panels": [],
+      "title": "🤖 AI Component Performance (LLM vs Embedding vs Vector DB)",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 20000
+              },
+              {
+                "color": "orange",
+                "value": 40000
+              },
+              {
+                "color": "red",
+                "value": 60000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 0,
+        "y": 23
+      },
+      "id": 7,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "text": {
+          "valueSize": 32
+        },
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_summary_latency_ms",
+          "refId": "A"
+        }
+      ],
+      "title": "🧠 Ollama LLM (Summary)",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 15000
+              },
+              {
+                "color": "orange",
+                "value": 30000
+              },
+              {
+                "color": "red",
+                "value": 50000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 6,
+        "y": 23
+      },
+      "id": 8,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value_and_name",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_skills_latency_ms",
+          "refId": "A"
+        }
+      ],
+      "title": "🔧 Ollama LLM (Skills)",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 500
+              },
+              {
+                "color": "orange",
+                "value": 1000
+              },
+              {
+                "color": "red",
+                "value": 2000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 12,
+        "y": 23
+      },
+      "id": 9,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_embedding_latency_ms",
+          "refId": "A"
+        }
+      ],
+      "title": "📊 Sentence Embedding",
+      "type": "stat"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 5
+              },
+              {
+                "color": "orange",
+                "value": 10
+              },
+              {
+                "color": "red",
+                "value": 20
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 6,
+        "x": 18,
+        "y": 23
+      },
+      "id": 10,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_redis_latency_ms",
+          "refId": "A"
+        }
+      ],
+      "title": "⚡ Redis Vector Search",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 11,
+      "panels": [],
+      "title": "🎯 Matching & Scoring Performance",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "showValues": false,
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "🎯 Vector Matching"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "blue",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "📊 LLM Scoring"
+            },
+            "properties": [
+              {
+                "id": "color",
+                "value": {
+                  "fixedColor": "purple",
+                  "mode": "fixed"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 29
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [
+            "lastNotNull",
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_match_latency_ms",
+          "legendFormat": "🎯 Vector Matching",
+          "refId": "A"
+        },
+        {
+          "expr": "ai_service_score_latency_ms",
+          "legendFormat": "📊 LLM Scoring",
+          "refId": "B"
+        }
+      ],
+      "title": "Resume-JD Matching & Scoring Latency Timeline",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "id": 13,
+      "panels": [],
+      "title": "📊 Component Breakdown & Comparison",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 10000
+              },
+              {
+                "color": "orange",
+                "value": 30000
+              },
+              {
+                "color": "red",
+                "value": 60000
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 38
+      },
+      "id": 14,
+      "options": {
+        "displayMode": "gradient",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_summary_latency_ms",
+          "legendFormat": "Summary",
+          "refId": "A"
+        },
+        {
+          "expr": "ai_service_skills_latency_ms",
+          "legendFormat": "Skills",
+          "refId": "B"
+        },
+        {
+          "expr": "ai_service_embedding_latency_ms",
+          "legendFormat": "Embedding",
+          "refId": "C"
+        },
+        {
+          "expr": "ai_service_redis_latency_ms",
+          "legendFormat": "Redis",
+          "refId": "D"
+        },
+        {
+          "expr": "ai_service_match_latency_ms",
+          "legendFormat": "Matching",
+          "refId": "E"
+        },
+        {
+          "expr": "ai_service_score_latency_ms",
+          "legendFormat": "Scoring",
+          "refId": "F"
+        }
+      ],
+      "title": "Stage-wise Performance Comparison (Latest)",
+      "type": "bargauge"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": [],
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 38
+      },
+      "id": 15,
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "value",
+            "percent"
+          ]
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "sort": "desc",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_summary_latency_ms",
+          "legendFormat": "Summary",
+          "refId": "A"
+        },
+        {
+          "expr": "ai_service_skills_latency_ms",
+          "legendFormat": "Skills",
+          "refId": "B"
+        },
+        {
+          "expr": "ai_service_embedding_latency_ms",
+          "legendFormat": "Embedding",
+          "refId": "C"
+        },
+        {
+          "expr": "ai_service_redis_latency_ms",
+          "legendFormat": "Redis",
+          "refId": "D"
+        },
+        {
+          "expr": "ai_service_match_latency_ms",
+          "legendFormat": "Matching",
+          "refId": "E"
+        },
+        {
+          "expr": "ai_service_score_latency_ms",
+          "legendFormat": "Scoring",
+          "refId": "F"
+        }
+      ],
+      "title": "Processing Time Distribution (%)",
+      "type": "piechart"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "id": 16,
+      "panels": [],
+      "title": "⚠️ System Health & Monitoring",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "yellow",
+                "value": 1
+              },
+              {
+                "color": "orange",
+                "value": 5
+              },
+              {
+                "color": "red",
+                "value": 10
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 24,
+        "x": 0,
+        "y": 47
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.2.1",
+      "targets": [
+        {
+          "expr": "ai_service_errors_total",
+          "refId": "A"
+        }
+      ],
+      "title": "에러 발생 횟수",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 51
+      },
+      "id": 18,
+      "panels": [],
+      "title": "🏗️ Technology Stack Info",
+      "type": "row"
+    },
+    {
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 24,
+        "x": 0,
+        "y": 52
+      },
+      "id": 19,
+      "options": {
+        "code": {
+          "language": "plaintext",
+          "showLineNumbers": false,
+          "showMiniMap": false
+        },
+        "content": "<div style='font-family:Arial; padding:20px; line-height:1.8;'><div style='display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;'><div style='background:rgba(102, 126, 234, 0.1); padding:20px; border-radius:8px; border-left:4px solid #667eea;'><h3 style='color:#667eea; margin-top:0;'>🔄 Orchestration</h3><ul style='color:#ddd; margin:0; padding-left:20px;'><li><b>n8n</b> - Workflow Automation</li><li><b>Webhook</b> - Event-driven Triggers</li><li><b>Redis Pub/Sub</b> - Real-time Notifications</li><li><b>Kafka</b> - Event Streaming</li></ul></div><div style='background:rgba(245, 87, 108, 0.1); padding:20px; border-radius:8px; border-left:4px solid #f5576c;'><h3 style='color:#f5576c; margin-top:0;'>🤖 AI/ML Stack</h3><ul style='color:#ddd; margin:0; padding-left:20px;'><li><b>FastAPI</b> - AI Service Backend</li><li><b>Ollama</b> - Local LLM Runtime</li><li><b>nomic-embed-text</b> - Sentence Embeddings</li><li><b>LangChain</b> - LLM Framework</li></ul></div><div style='background:rgba(0, 242, 254, 0.1); padding:20px; border-radius:8px; border-left:4px solid #00f2fe;'><h3 style='color:#00f2fe; margin-top:0;'>🗄️ Data Layer</h3><ul style='color:#ddd; margin:0; padding-left:20px;'><li><b>Redis Stack</b> - Vector Database</li><li><b>RediSearch</b> - Full-text & Vector Search</li><li><b>PostgreSQL</b> - Relational Database</li><li><b>Spring Data JPA</b> - ORM</li></ul></div><div style='background:rgba(254, 225, 64, 0.1); padding:20px; border-radius:8px; border-left:4px solid #fee140;'><h3 style='color:#fee140; margin-top:0;'>📊 Monitoring</h3><ul style='color:#ddd; margin:0; padding-left:20px;'><li><b>Prometheus</b> - Metrics Collection</li><li><b>Pushgateway</b> - Batch Job Metrics</li><li><b>Grafana</b> - Visualization</li><li><b>Kubernetes</b> - Container Orchestration</li></ul></div></div></div>",
+        "mode": "html"
+      },
+      "pluginVersion": "12.2.1",
+      "title": "CoreBridge Tech Stack",
+      "type": "text"
+    }
+  ],
+  "preload": false,
+  "refresh": "5s",
+  "schemaVersion": 42,
+  "tags": [
+    "ai",
+    "n8n",
+    "fastapi",
+    "ollama",
+    "redis",
+    "corebridge",
+    "vector-search",
+    "llm"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "nowDelay": "",
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h"
+    ]
+  },
+  "timezone": "browser",
+  "title": "🚀 CoreBridge n8n AI Pipeline Dashboard",
+  "uid": "corebridge-n8n-pipeline-v1",
+  "version": 2
+}
