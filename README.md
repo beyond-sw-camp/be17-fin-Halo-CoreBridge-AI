@@ -99,9 +99,13 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 
 [http://175.197.41.64:33377](http://175.197.41.64:33377/d/corebridge-n8n-pipeline-v1/-corebridge-n8n-ai-pipeline-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&refresh=5s)
 
+
 ### 주요 지표
 
-<img width="1580" height="681" alt="image" src="https://github.com/user-attachments/assets/6c2af872-8ab9-4cf7-8627-b2dacd909b15" />
+<img width="1580" height="813" alt="1" src="https://github.com/user-attachments/assets/f4a0c992-0dea-457e-88db-ab1c82c3b32f" />
+
+<img width="1584" height="824" alt="2" src="https://github.com/user-attachments/assets/b2cf231a-054f-4fc4-a46c-884ad9a2fe16" />
+
 
 - `ai_workflow_total_processing_ms`  
 - `ai_service_summary_latency_ms`  
@@ -147,6 +151,7 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 - JD 매칭 속도 50~300ms로 단축  
 - LLM 병목 파악 후 개선 방향성 명확화  
 - 서비스 장애 관찰성 확보  
+
 
 
 
