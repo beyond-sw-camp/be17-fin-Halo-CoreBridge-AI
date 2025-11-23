@@ -1,4 +1,82 @@
-# be17-fin-Halo-CoreBridge-AI
+<img width="420" height="420" alt="image" src="https://github.com/user-attachments/assets/e551d58b-12ac-4c03-a4fa-976611f3d303" /># be17-fin-Halo-CoreBridge-AI
+
+<h1 align="center">
+    <img src="https://github.com/beyond-sw-camp/be17-fin-Halo-CoreBridge-BE/raw/dev/docs/assets/imgs/CoreBridge-icon.png" alt="CoreBridge 아이콘" width="30" height="30">
+    CoreBridge
+</h1>
+
+<p align="center">
+  <img src="[docs/assets/imgs/CoreBridge-logo.png](https://github.com/beyond-sw-camp/be17-fin-Halo-CoreBridge-BE/raw/dev/docs/assets/imgs/CoreBridge-logo.png)"  alt="CoreBridge 로고" height="500" />
+
+  
+
+<h3 align="center">3팀 - Halo</h3>
+
+<br /><br />
+
+# 👨‍💻 팀원 구성
+<div align=center>
+<table>
+  <tr>
+    <td>
+      <a href="https://github.com/lesw1216">
+        <img src="https://avatars.githubusercontent.com/u/96828250?v=4" width="150" style="max-width: 100%;">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/atimaby28">
+        <img src="https://avatars.githubusercontent.com/u/149382180?v=4" width="150" style="max-width: 100%;">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/Hanryang-Kim">
+        <img src="https://avatars.githubusercontent.com/u/214753184?v=4" width="150" style="max-width: 100%;">
+      </a>
+    </td>
+    <td>
+      <a href="https://github.com/junsun-yeam">
+        <img src="https://avatars.githubusercontent.com/u/210853817?v=4" width="150" style="max-width: 100%;">
+      </a>
+    </td>
+    <td>
+      <a href="https://avatars.githubusercontent.com/u/206636155?v=4">
+        <img src="docs/assets/avatar/" width="150" style="max-width: 100%;">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/lesw1216">이상우</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/atimaby28">양승우</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Hanryang-Kim">김륜환</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/junsun-yeam">염준선</a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/young1042">김영재</a>
+    </td>
+  </tr>
+</table>
+</div>
+<br><br>
+
+---
+
+# 실제 배포 접속 주소
+
+## 프론트 
+
+* [www.core-bridge.co.kr](https://www.core-bridge.co.kr/jobs)
+
+## 백엔드
+
+* [api.core-bridge.co.kr](https://api.core-bridge.co.kr)
+
 
 
 ## 🚀 CoreBridge AI Pipeline
@@ -151,6 +229,7 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 - JD 매칭 속도 50~300ms로 단축  
 - LLM 병목 파악 후 개선 방향성 명확화  
 - 서비스 장애 관찰성 확보  
+
 
 
 
