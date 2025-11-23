@@ -1,12 +1,10 @@
-<img width="420" height="420" alt="image" src="https://github.com/user-attachments/assets/e551d58b-12ac-4c03-a4fa-976611f3d303" /># be17-fin-Halo-CoreBridge-AI
-
 <h1 align="center">
     <img src="https://github.com/beyond-sw-camp/be17-fin-Halo-CoreBridge-BE/raw/dev/docs/assets/imgs/CoreBridge-icon.png" alt="CoreBridge 아이콘" width="30" height="30">
     CoreBridge
 </h1>
 
 <p align="center">
-  <img src="[docs/assets/imgs/CoreBridge-logo.png](https://github.com/beyond-sw-camp/be17-fin-Halo-CoreBridge-BE/raw/dev/docs/assets/imgs/CoreBridge-logo.png)"  alt="CoreBridge 로고" height="500" />
+  <img src="https://github.com/beyond-sw-camp/be17-fin-Halo-CoreBridge-BE/raw/dev/docs/assets/imgs/CoreBridge-logo.png"  alt="CoreBridge 로고" height="500" />
 
   
 
@@ -40,7 +38,7 @@
     </td>
     <td>
       <a href="https://avatars.githubusercontent.com/u/206636155?v=4">
-        <img src="docs/assets/avatar/" width="150" style="max-width: 100%;">
+        <img src="https://avatars.githubusercontent.com/u/206636155?v=4" width="150" style="max-width: 100%;">
       </a>
     </td>
   </tr>
@@ -67,7 +65,7 @@
 
 ---
 
-# 실제 배포 접속 주소
+# 배포 접속 주소
 
 ## 프론트 
 
@@ -78,6 +76,9 @@
 * [api.core-bridge.co.kr](https://api.core-bridge.co.kr)
 
 
+---
+
+<br /><br />
 
 ## 🚀 CoreBridge AI Pipeline
 
@@ -87,6 +88,14 @@
 <br /><br />
 
 AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직접 설계·구현·자동화·모니터링**한 프로젝트입니다. 이력서 텍스트를 입력받아 요약 → 스킬 추출 → 임베딩 → 벡터 검색 → 매칭 → LLM 스코어링 → DB 저장까지 **총 8단계의 End-To-End AI Workflow**를 n8n을 이용해 구축했습니다.
+
+처음에는 /spring 파일에 있는 java 코드처럼 AI server로 직접 트리거 하였으나, 점차 자동화 파이프라인 구축을 위해 노코드(no-code)기반 n8n 오픈소스 워크플로우 자동화 도구를 사용하였습니다.  
+
+<br /><br />
+
+![Animation10](https://github.com/user-attachments/assets/c03c15a1-7da4-4e82-a985-931e2901cbb8)
+
+
 
 <br /><br />
 
@@ -172,7 +181,7 @@ AI 기반 실시간 채용 매칭 시스템의 **전체 파이프라인을 직�
 
 <br /><br />
 
-## 📊 모니터링 & 관찰성 (Observability)
+## 📊 모니터링 (Observability)
 Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시각화했습니다.
 
 [http://175.197.41.64:33377](http://175.197.41.64:33377/d/corebridge-n8n-pipeline-v1/-corebridge-n8n-ai-pipeline-dashboard?orgId=1&from=now-15m&to=now&timezone=browser&refresh=5s)
@@ -229,6 +238,7 @@ Prometheus + Pushgateway + Grafana로 AI Workflow 성능을 정량적으로 시�
 - JD 매칭 속도 50~300ms로 단축  
 - LLM 병목 파악 후 개선 방향성 명확화  
 - 서비스 장애 관찰성 확보  
+
 
 
 
